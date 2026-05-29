@@ -126,7 +126,7 @@ int main() {
         printf("2. Generuj losowe tablice (100 - 1 000 000) i zapisz raport\n");
         printf("3. Wyjscie\n");
         printf("Wybor: ");
-        if (scanf("%d", &opcja) != 1) break;
+        if (scanf_s("%d", &opcja) != 1) break;
 
         if (opcja == 1) {
             FILE* f_in = fopen("dane.txt", "r");
@@ -135,7 +135,7 @@ int main() {
                 continue;
             }
             int temp, licznik = 0;
-            while (fscanf(f_in, "%d", &temp) == 1) licznik++;
+            while (fscanf_s(f_in, "%d", &temp) == 1) licznik++;
 
             if (licznik == 0) {
                 printf("Plik 'dane.txt' jest pusty!\n");
@@ -145,7 +145,7 @@ int main() {
 
             int* tab_plik = (int*)malloc(licznik * sizeof(int));
             rewind(f_in);
-            for (int i = 0; i < licznik; i++) fscanf(f_in, "%d", &tab_plik[i]);
+            for (int i = 0; i < licznik; i++) fscanf_s(f_in, "%d", &tab_plik[i]);
             fclose(f_in);
 
             printf("Wczytano %d elementow. Sortowanie...\n", licznik);
